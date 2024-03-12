@@ -1,0 +1,45 @@
+﻿<Window x:Class="Main.StudentDiary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Main"
+        mc:Ignorable="d"
+        Title="StudentDiary" Height="450"  Width="800">
+    <TabControl>
+        <TabItem Header="Домашнее задание">
+            <ListBox x:Name="lb_homework">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Theme, StringFormat=Тема: {0}}"/>
+                            <TextBlock Text="{Binding Lesson.Theme, StringFormat=Урок: {0}}"/>
+                            <TextBlock Text="{Binding Task, StringFormat=Задание: {0} }"/>
+                            <TextBlock Text="{Binding Status, StringFormat=Статус: {0} }"/>
+                            <TextBlock Text="{Binding Date, StringFormat=Дата: {0:dd.MM.yy}}"/>
+                            <TextBlock Text="{Binding Grade , StringFormat=Оценка: {0}}"/>
+                            <TextBlock Text="{Binding Comment , StringFormat=Комментарий: {0}}"/>
+                            <TextBlock/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </TabItem>
+        <TabItem Header="Уроки">
+            <ListBox x:Name="lb_lesson">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Lesson.TeacherGroupSubject.Subject.Name, StringFormat=Предмет: {0}}"/>
+                            <TextBlock Text="{Binding Lesson.TeacherGroupSubject.Teacher.Name, StringFormat=Преподаватель: {0}}"/>
+                            <TextBlock Text="{Binding Lesson.Theme, StringFormat=Тема: {0}}"/>
+                            <TextBlock Text="{Binding Lesson.Date, StringFormat=Дата: {0:dd.MM.yy}}"/>
+                            <TextBlock Text="{Binding Lesson.Grade , StringFormat=Оценка: {0}}"/>
+                            <TextBlock/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </TabItem>
+    </TabControl>
+</Window>

@@ -1,0 +1,112 @@
+﻿<Window x:Class="Main.TeacherJournal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Main"
+        mc:Ignorable="d"
+        Title="TeacherJournal" Height="450" Width="800">
+    <TabControl>
+        <TabItem Header="Всё о всех">
+            <DataGrid CanUserAddRows="True" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Группы">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TeacherGroupSubject.Group.Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox
+                                    ItemsSource="{Binding Groups}"
+                                    DisplayMemberPath="Name"
+                                    SelectedItem="{Binding TeacherGroupSubject.Group}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn Header="Преподаватель">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TeacherGroupSubject.Teacher.Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox
+                                    ItemsSource="{Binding Teachers}"
+                                    DisplayMemberPath="Name"
+                                    SelectedItem="{Binding TeacherGroupSubject.Teacher}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn Header="Предмет">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TeacherGroupSubject.Subject.Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox
+                                    ItemsSource="{Binding Subjects}"
+                                    DisplayMemberPath="Name"
+                                    SelectedItem="{Binding TeacherGroupSubject.Subject}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                                              
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </TabItem>
+        
+        <TabItem Header="Предметы">
+            <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Предметы">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TeacherGroupSubject.Subject.Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox
+                        ItemsSource="{Binding Subjects}"
+                        DisplayMemberPath="Name"
+                        SelectedItem="{Binding TeacherGroupSubject.Subject}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </TabItem>
+
+        <TabItem Header="Домашние задания">
+            <ListBox x:Name="lb_homeworks">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+
+
+                            <TextBlock/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </TabItem>
+    </TabControl>
+</Window>
